@@ -1,5 +1,5 @@
 import React from 'react';
-import carritoImagen from './assets/carrito-compras.png';
+import carritoImagen from './assets/carrito-compras.svg';
 
 const CartWidget = () => {
 const hardcodedItemCount = 3;

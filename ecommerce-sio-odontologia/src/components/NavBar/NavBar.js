@@ -1,37 +1,44 @@
 import React from 'react';
+import { Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CartWidget from '../CartWidget/CartWidget';
+import styled from 'styled-components';
 
-const Navbar = ({ onPageChange }) => {
-    return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container">
-        <div className="d-flex align-items-center">
-            <a className="navbar-brand" href="3">
-            <img src="/images/logo.png" alt="Logo-consultorio" className="logo" style={{ width: '250px' }} />
-            </a>
-            <h3>Tratamientos Dentales</h3>
-        </div>
-        <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-                <button className="nav-link btn btn-outline-primary" onClick={() => onPageChange('limpieza')}>Limpieza Dental</button>
-            </li>
-            <li className="nav-item">
-                <button className="nav-link btn btn-outline-primary" onClick={() => onPageChange('blanqueamiento')}>Blanqueamiento</button>
-            </li>
-            <li className="nav-item">
-                <button className="nav-link btn btn-outline-primary" onClick={() => onPageChange('ortodoncia')}>Ortodoncia</button>
-            </li>
-            <li className="nav-item">
-                <button className="nav-link btn btn-outline-primary" onClick={() => onPageChange('implantes')}>Implantes Dentales</button>
-            </li>
-        </ul>
-        </div>
-        <CartWidget itemCount={3} />
-        </div>
-    </nav>
-    );
+const StyledNavbar = styled.nav`
+  // Estilos para el contenedor principal
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+`;
+
+const StyledLink = styled(Link)`
+  // Estilos para enlaces
+  color: #333;
+  margin-right: 15px;
+  text-decoration: none;
+
+  &:hover {
+    color: #007bff;
+  }
+`;
+
+const Navbar = () => {
+  return (
+    <StyledNavbar className="navbar navbar-expand-lg navbar-light">
+
+      <StyledLink to="/" className="navbar-brand">
+        <img src="/images/logo.png" alt="Logo-consultorio" className="logo" style={{ width: '250px' }} />
+      </StyledLink>
+      <h3 style={{ fontSize: '1.5rem', margin: '0 10px' }}>Tratamientos Dentales</h3>
+
+    <StyledLink to="/limpieza">Limpieza Dental</StyledLink>
+    <StyledLink to="/blanqueamiento">Blanqueamiento</StyledLink>
+    <StyledLink to="/ortodoncia">Ortodoncia</StyledLink>
+    <StyledLink to="/implantes">Implantes Dentales</StyledLink>
+
+      <CartWidget itemCount={3} />
+    </StyledNavbar>
+  );
 }
 
 export default Navbar;
